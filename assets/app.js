@@ -120,6 +120,7 @@ function createCardOnUi(response){
         </td>`
        spinner.classList.add('d-none');
         userContainer.prepend(tr);
+        userForm.reset();    
 }
 userForm.addEventListener('submit',onCreate);
 
@@ -177,6 +178,10 @@ function pathOnUi(postObj){
   spinner.classList.add('d-none');
   addBtn.classList.add('d-none');
   updateBtn.classList.remove('d-none')
+  userForm.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
 
 }
@@ -197,11 +202,11 @@ function onUpdate(){
 }
 
 function updateOnUi(updateId, updateObj){
-    let tr = document.getElementById(updateId).children;
-    tr[1].innerHTML = updateObj.name;
-    tr[2].innerHTML = updateObj.username;
-    tr[3].innerHTML = updateObj.email;
-    tr[4].innerHTML = updateObj.phone;
+    let row = document.getElementById(updateId);  
+    row.children[1].innerHTML = updateObj.name;
+    row.children[2].innerHTML = updateObj.username;
+    row.children[3].innerHTML = updateObj.email;
+    row.children[4].innerHTML = updateObj.phone;
      Swal.fire({
               title: "User updated successfully",
               icon: "success",
@@ -211,11 +216,10 @@ function updateOnUi(updateId, updateObj){
     spinner.classList.add('d-none');          
     addBtn.classList.remove('d-none');
     updateBtn.classList.add('d-none')
-     productCart.scrollIntoView({
+      row.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "center"
     });
-
     userForm.reset();                     
     localStorage.removeItem('editId');    
 }
