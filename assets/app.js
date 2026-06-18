@@ -211,6 +211,10 @@ function updateOnUi(updateId, updateObj){
     spinner.classList.add('d-none');          
     addBtn.classList.remove('d-none');
     updateBtn.classList.add('d-none')
+     productCart.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+    });
 
     userForm.reset();                     
     localStorage.removeItem('editId');    
